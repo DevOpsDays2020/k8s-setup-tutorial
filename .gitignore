@@ -1,0 +1,6 @@
+.idea/
+.vagrant/
+.DS_Store
+*.tar.gz
+*.tgz
+**/**/*amd64

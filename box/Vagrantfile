@@ -1,0 +1,16 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+    config.vm.box = "centos/7"
+
+    # 默认会开启根目录的同步
+    # config.vm.synced_folder ".", "/vagrant", type: "rsync"
+
+    config.vm.provider "virtualbox" do |vb|
+       vb.name = "myCentos7"
+       vb.gui = false
+    end
+
+    config.vm.provision "shell", path: "init-centos.sh"
+end
