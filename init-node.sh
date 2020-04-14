@@ -11,14 +11,4 @@ cat >> /etc/hosts <<EOF
 EOF
 cat /etc/hosts
 
-echo 'create k8s directory'
-mkdir -p /opt/k8s/{bin,work} /etc/{kubernetes,etcd}/cert
-
-cp /vagrant/environment.sh /opt/k8s/bin
-chmod +x /opt/k8s/bin/*
-
-echo 'update root bashrc'
-echo 'source /opt/k8s/bin/environment.sh' >> /root/.bashrc
-source /root/.bashrc
-
 echo '/sbin/iptables -P FORWARD ACCEPT' >> /etc/rc.local
