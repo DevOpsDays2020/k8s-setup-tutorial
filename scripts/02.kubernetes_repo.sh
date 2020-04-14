@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# 每个node节点都需要执行
+
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes

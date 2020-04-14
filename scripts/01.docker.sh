@@ -29,6 +29,7 @@ docker info | grep Cgroup
 
 vi /usr/lib/systemd/system/docker.service
 
+# 修改如下参数：
 # ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd
 
 systemctl daemon-reload
