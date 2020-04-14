@@ -4,7 +4,7 @@
 $num_instances = 3
 $vm_gui = false
 $vm_memory = 4096
-$vm_cpus = 1
+$vm_cpus = 2
 
 Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
