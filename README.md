@@ -1,4 +1,4 @@
-# 使用Vagrant和VirtualBox在本地搭建分布式的Kubernetes集群
+# 本地Hard-Way模式搭建Kubernetes集群（v1.14.8）
 
 当我们需要在本地开发时，希望能够有一个开箱即用又可以方便定制的分布式开发环境，这样才能对Kubernetes本身和应用进行更好的测试。现在我们使用[Vagrant](https://www.vagrantup.com/)和[VirtualBox](https://www.virtualbox.org/wiki/Downloads)来创建一个这样的环境。
 
