@@ -1,15 +1,22 @@
 #!/usr/bin/bash
 
-kubeadm config print init-defaults > kubeadm.yaml
+kubeadm config print init-defaults > kubeadm-init.yaml
 
 ## 修改部分参数，参考本目录下的kubeadm.yaml
 
-kubeadm init --config kubeadm.yaml
+# 预下载镜像
+kubeadm config images pull --config kubeadm-init.yaml
+
+kubeadm init --config kubeadm-init.yaml
 
 # 拷贝 kubeconfig 文件
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+# 拷贝到其他节点
+scp ~/.kube/config root@node2:/root/.kube/config
+scp ~/.kube/config root@node3:/root/.kube/config
 
 # worker节点执行join方法
 kubeadm join 192.168.56.101:6443 --token abcdef.0123456789abcdef \
