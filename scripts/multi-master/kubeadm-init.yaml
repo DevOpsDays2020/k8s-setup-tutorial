@@ -1,0 +1,45 @@
+apiVersion: kubeadm.k8s.io/v1beta2
+bootstrapTokens:
+  - groups:
+      - system:bootstrappers:kubeadm:default-node-token
+    token: abcdef.0123456789abcdef
+    ttl: 24h0m0s
+    usages:
+      - signing
+      - authentication
+kind: InitConfiguration
+localAPIEndpoint:
+  advertiseAddress: 192.168.56.101   # apiserver 节点内网IP
+  bindPort: 6443
+nodeRegistration:
+  criSocket: /var/run/dockershim.sock
+  name: node1   # 默认读取当前master节点的hostname
+  taints:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+---
+apiServer:
+  timeoutForControlPlane: 4m0s
+apiVersion: kubeadm.k8s.io/v1beta2
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controlPlaneEndpoint: "192.168.56.101:6443"
+controllerManager: {}
+dns:
+  type: CoreDNS
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+#imageRepository: ccr.ccs.tencentyun.com/tke_google_containers  # 修改成自己的镜像源
+imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers # 指定镜像源为阿里源
+kind: ClusterConfiguration
+kubernetesVersion: v1.16.8
+networking:
+  dnsDomain: cluster.local
+  podSubnet: 10.244.0.0/16  # Pod 网段，flannel插件需要使用这个网段
+  serviceSubnet: 10.96.0.0/12
+scheduler: {}
+---
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+mode: ipvs  # kube-proxy 模式
