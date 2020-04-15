@@ -20,9 +20,9 @@
 
 | IP           | 主机名   | 组件                                       |
 | ------------ | ----- | ---------------------------------------- |
-| 192.168.56.101 | node1 | kube-apiserver、kube-controller-manager、kube-scheduler、kubelet、etcd、corecdn、dashboard |
-| 192.168.56.102 | node2 | kube-apiserver、kube-controller-manager、kube-scheduler、kubelet、etcd |
-| 192.168.56.103 | node3 | kube-apiserver、kube-controller-manager、kube-scheduler、kubelet、etcd |
+| 192.168.56.101 | node1 | kubeadm、kubelet、kube-apiserver、kube-controller-manager、kube-scheduler、etcd、dashboard |
+| 192.168.56.102 | node2 | kubeadm、kubelet、kube-apiserver、kube-controller-manager、kube-scheduler、etcd |
+| 192.168.56.103 | node3 | kubeadm、kubelet |
 
 **注意**：以上的IP、主机名和组件都是固定在这些节点的，即使销毁后下次使用vagrant重建依然保持不变。
 
