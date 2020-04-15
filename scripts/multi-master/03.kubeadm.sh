@@ -43,3 +43,6 @@ wget https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65
 kubectl apply -f kube-flannel.yml
 
 kubectl get pods -n kube-system
+
+# master节点污点问题
+kubectl taint nodes --all node-role.kubernetes.io/master-
