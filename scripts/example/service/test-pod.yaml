@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  labels:
+    name: nginx-service
+spec:
+  ports:
+    - port: 5000
+      targetPort: 80
+  selector:
+    app: nginx
+  [root@node1 service]# cat test-pod.yaml
+   apiVersion: v1
+   kind: Pod
+   metadata:
+     name: test-pod
+   spec:
+     containers:
+       - name: test-service-pod
+         image: busybox
+         command: ["/bin/sh", "-c", "env"]

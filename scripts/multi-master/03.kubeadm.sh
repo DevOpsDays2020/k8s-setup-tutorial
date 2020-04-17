@@ -46,3 +46,6 @@ kubectl get pods -n kube-system
 
 # master节点污点问题
 kubectl taint nodes --all node-role.kubernetes.io/master-
+
+# 升级
+# kubeadm upgrade apply --config kubeadm-init.yaml
