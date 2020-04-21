@@ -23,14 +23,15 @@ apiServer:
 apiVersion: kubeadm.k8s.io/v1beta2
 certificatesDir: /etc/kubernetes/pki
 clusterName: kubernetes
+controlPlaneEndpoint: "192.168.56.101:6443" # 加入apiserver高可用地址
 controllerManager: {}
 dns:
   type: CoreDNS
 etcd:
   local:
     dataDir: /var/lib/etcd
-imageRepository: ccr.ccs.tencentyun.com/tke_google_containers  # 修改成自己的镜像源
-#imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers # 指定镜像源为阿里源
+#imageRepository: ccr.ccs.tencentyun.com/tke_google_containers  # 修改成自己的镜像源
+imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers # 指定镜像源为阿里源
 kind: ClusterConfiguration
 kubernetesVersion: v1.16.8
 networking:

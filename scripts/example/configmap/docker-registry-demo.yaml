@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: foo
+spec:
+  containers:
+    - name: foo
+      image: amuguelove/busybox:latest
+  imagePullSecrets:
+    - name: myregistry

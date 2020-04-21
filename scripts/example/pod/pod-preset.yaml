@@ -1,0 +1,18 @@
+# 在 APIServer 启动参数中添加如下配置：
+# - --enable-admission-plugins=NodeRestriction,PodPreset
+# - --runtime-config=settings.k8s.io/v1alpha1=true
+apiVersion: settings.k8s.io/v1alpha1
+kind: PodPreset
+metadata:
+  name: time-preset
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+  volumeMounts:
+    - name: localtime
+      mountPath: /etc/localtime
+  volumes:
+    - name: localtime
+      hostPath:
+        path: /etc/localtime

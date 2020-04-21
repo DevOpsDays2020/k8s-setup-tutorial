@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 
-kubeadm config print init-defaults > kubeadm-init.yaml
+kubeadm config print init-defaults > kubeadm.yaml
 
 ## 修改部分参数，参考本目录下的kubeadm.yaml
 
 # 预下载镜像
-kubeadm config images pull --config kubeadm-init.yaml
+kubeadm config images pull --config kubeadm.yaml
 
-kubeadm init --config kubeadm-init.yaml
+kubeadm init --config kubeadm.yaml
 
 # 拷贝 kubeconfig 文件
 mkdir -p $HOME/.kube
@@ -40,6 +40,13 @@ kubeadm join 192.168.56.101:6443 --token abcdef.0123456789abcdef \
 # 下载flannel
 wget https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65e414cf26827915/Documentation/kube-flannel.yml
 
+# 修改kube-flannel-ds-amd64 的 DaemonSet中的参数，在kube-flannel容器下面，添加网卡参数
 kubectl apply -f kube-flannel.yml
 
 kubectl get pods -n kube-system
+
+# master节点污点问题
+kubectl taint nodes --all node-role.kubernetes.io/master-
+
+# 升级
+# kubeadm upgrade apply --config kubeadm-init.yaml

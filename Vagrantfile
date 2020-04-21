@@ -3,7 +3,7 @@
 
 $num_instances = 3
 $vm_gui = false
-$vm_memory = 4096
+$vm_memory = 2048
 $vm_cpus = 2
 
 Vagrant.configure("2") do |config|
