@@ -34,11 +34,27 @@ configurationFiles:
   mysql.cnf: |-
     [mysqld]
     default-time-zone = '+8:00'
-> EOF
+EOF
 
 
 # 安装
 helm install -f mysql-config.yaml mydb stable/mysql
+
+# 添加mysql-pv.yaml
+
+cat > mysql-pv.yaml <<EOF
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+spec:
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data/mysql"
+EOF
 
 # 升级
 # helm upgrade -f mysql-config.yaml mydb stable/mysql

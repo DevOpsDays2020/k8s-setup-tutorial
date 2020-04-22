@@ -45,12 +45,12 @@ kubectl get svc -n monitoring
 
 # 自动发现k8s service, 需要我们在 Service 的 annotation 区域添加 prometheus.io/scrape=true 的声明，并执行
 
-kubectl create secret generic additional-configs --from-file=prometheus-additional.yaml -n monitoring
+kubectl create secret generic additional-scrape-configs --from-file=prometheus-additional.yaml -n monitoring
 
 # 修改 prometheus-prometheus.yaml 文件中的 additionalScrapeConfigs 属性
-additionalScrapeConfigs:
-  name: additional-configs
-  key: prometheus-additional.yaml
+#additionalScrapeConfigs:
+#  name: additional-scrape-configs
+#  key: prometheus-additional.yaml
 
 # 修改prometheus-clusterRole.yaml, 见addons
 kubectl apply -f prometheus-clusterRole.yaml
