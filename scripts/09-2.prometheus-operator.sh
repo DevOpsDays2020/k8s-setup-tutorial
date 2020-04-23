@@ -1,7 +1,9 @@
 #!/usr/bin/env sh
 
+# 使用Helm安装
+
 # 验证
-# prometheus-operator-config.yaml 文件参考addons/prometheus
+# prometheus-operator-config.yaml 文件参考scripts/addons/prometheus2
 helm install -f prometheus-operator-config.yaml --dry-run --debug --generate-name stable/prometheus-operator
 
 # 安装

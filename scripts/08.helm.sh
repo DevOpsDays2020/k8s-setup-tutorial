@@ -36,7 +36,6 @@ configurationFiles:
     default-time-zone = '+8:00'
 EOF
 
-
 # 安装
 helm install -f mysql-config.yaml mydb stable/mysql
 

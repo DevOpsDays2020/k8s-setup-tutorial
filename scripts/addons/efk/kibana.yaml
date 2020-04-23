@@ -8,7 +8,7 @@ metadata:
 spec:
   ports:
     - port: 5601
-      nodePort: 30601
+      nodePort: 31500
   type: NodePort
   selector:
     app: kibana
@@ -31,14 +31,15 @@ spec:
     spec:
       containers:
         - name: kibana
-          image: docker.elastic.co/kibana/kibana-oss:6.4.3
+#          image: docker.elastic.co/kibana/kibana-oss:6.4.3
+          image: docker.elastic.co/kibana/kibana-oss:6.7.0
           resources:
             limits:
               cpu: 1000m
             requests:
               cpu: 100m
           env:
-            - name: ELASTICSEARCH_URL
+            - name: ELASTICSEARCH_HOSTS # kibana < 6.6 使用 ELASTICSEARCH_URL，否则 ELASTICSEARCH_HOSTS
               value: http://elasticsearch:9200
           ports:
             - containerPort: 5601
