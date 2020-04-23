@@ -4,11 +4,11 @@
 
 # 验证
 # prometheus-operator-config.yaml 文件参考scripts/addons/prometheus2
-helm install -f prometheus-operator-config.yaml --dry-run --debug --generate-name stable/prometheus-operator
+helm install -f prometheus-operator-values.yaml --dry-run --debug --generate-name stable/prometheus-operator
 
 # 安装
 kubectl create namespace monitoring
-helm install -f prometheus-operator-config.yaml prometheus-operator stable/prometheus-operator -n monitoring
+helm install -f prometheus-operator-values.yaml prometheus-operator stable/prometheus-operator -n monitoring
 
 # 添加 prometheus-pv.yaml
 cat > prometheus-pv.yaml <<EOF
