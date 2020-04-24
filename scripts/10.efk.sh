@@ -3,6 +3,8 @@
 # 使用自定义yaml文件安装EFK（elasticsearch + fluentd + kibana）
 # 文件目录scripts/addons/efk
 
+# 参考：https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/fluentd-elasticsearch
+
 # 1. 新建命名空间
 kubectl apply -f logging-namespace.yaml
 
@@ -23,7 +25,10 @@ helm install kibana stable/kibana \
     --namespace logging
 
 # 4. 创建Fluentd
-kubectl apply -f fluentd-cm.yaml fluentd-daemonset.yaml
+kubectl apply -f fluentd-cm.yaml -f fluentd-daemonset.yaml
+
+## 设置node selector
+kubectl label nodes k8s-master beta.kubernetes.io/fluentd-ds-ready="true"
 
 
 
