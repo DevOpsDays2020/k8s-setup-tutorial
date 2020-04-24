@@ -7,7 +7,7 @@
 
 
 # 1. 下载fluent-bit yaml文件
-cd scripts/addons/efk2
+cd scripts/addons/fluent-bit
 
 wget https://raw.githubusercontent.com/fluent/fluent-bit-kubernetes-logging/master/fluent-bit-service-account.yaml
 wget https://raw.githubusercontent.com/fluent/fluent-bit-kubernetes-logging/master/fluent-bit-role.yaml
