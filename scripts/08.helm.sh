@@ -25,7 +25,7 @@ helm repo add azure http://mirror.azure.cn/kubernetes/charts/
 helm inspect values stable/mysql
 
 # 修改参数
-cat > mysql-config.yaml <<EOF
+cat > mysql-values.yaml <<EOF
 mysqlRootPassword: password
 mysqlUser: liangbo
 mysqlPassword: abcd!234
@@ -37,7 +37,7 @@ configurationFiles:
 EOF
 
 # 安装
-helm install -f mysql-config.yaml mydb stable/mysql
+helm install -f mysql-values.yaml mysql stable/mysql -n dev
 
 # 添加mysql-pv.yaml
 
@@ -56,4 +56,4 @@ spec:
 EOF
 
 # 升级
-# helm upgrade -f mysql-config.yaml mydb stable/mysql
+# helm upgrade -f mysql-config.yaml mysql stable/mysql -n dev
