@@ -65,6 +65,7 @@ spec:
             privileged: true
         - name: increase-fd-ulimit
           image: busybox
+          imagePullPolicy: IfNotPresent
           command: ["sh", "-c", "ulimit -n 65536"]
           securityContext:
             privileged: true
