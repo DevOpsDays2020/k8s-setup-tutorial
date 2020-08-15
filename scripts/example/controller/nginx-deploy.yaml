@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: nginx
-  replicas: 2  # Pod 副本数量
+  replicas: 1  # Pod 副本数量
   template:  # Pod 模板
     metadata:
       labels:
