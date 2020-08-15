@@ -6,7 +6,7 @@ helm inspect values stable/mysql
 # 修改参数
 cat > mysql-values.yaml <<EOF
 mysqlRootPassword: password
-mysqlUser: kerry
+mysqlUser: root
 mysqlPassword: abcd!234
 mysqlDatabase: example_db
 configurationFiles:
