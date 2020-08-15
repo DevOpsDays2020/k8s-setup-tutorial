@@ -24,8 +24,10 @@ metadata:
   labels:
     app: my-nginx
 spec:
+  type: ClusterIP
   ports:
     - port: 80
+      targetPort: 80
       protocol: TCP
       name: http
   selector:
@@ -39,11 +41,10 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-    - host: ngdemo.example.com  # 将域名映射到 my-nginx 服务
-      http:
+    - http:
         paths:
           - path: /
             backend:
-              serviceName: my-nginx  # 将所有请求发送到 my-nginx 服务的 80 端口
-              servicePort: 80     # 不过需要注意大部分Ingress controller都不是直接转发到Service
-              # 而是只是通过Service来获取后端的Endpoints列表，直接转发到Pod，这样可以减少网络跳转，提高性能
+              serviceName: my-nginx  
+              servicePort: 80
+      host: ngdemo.qcloud.com

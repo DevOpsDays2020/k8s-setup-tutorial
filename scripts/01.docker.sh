@@ -32,3 +32,8 @@ vi /usr/lib/systemd/system/docker.service
 
 systemctl daemon-reload
 systemctl restart docker
+
+# Docker Secret
+kubectl create secret docker-registry docker-reg-secret --docker-server=DOCKER_SERVER --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD --docker-email=DOCKER_EMAIL
+
+kubectl create secret generic docker-reg-secret --from-file=.dockerconfigjson=/root/.docker/config.json --type=kubernetes.io/dockerconfigjson -n dev

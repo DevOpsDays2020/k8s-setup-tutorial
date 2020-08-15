@@ -1,0 +1,8 @@
+mysqlRootPassword: password
+mysqlUser: liangbo
+mysqlPassword: abcd!234
+mysqlDatabase: example_db
+configurationFiles:
+  mysql.cnf: |-
+    [mysqld]
+    default-time-zone = '+8:00'
