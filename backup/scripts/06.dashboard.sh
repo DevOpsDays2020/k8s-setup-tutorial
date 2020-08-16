@@ -21,6 +21,5 @@ kubectl apply -f dashboard-admin.yaml
 kubectl get secret -n kubernetes-dashboard|grep dashboard-admin-token
 
 ADMIN_SECRET=$(kubectl get secrets -n kubernetes-dashboard | grep dashboard-admin-token | awk '{print $1}')
-#DASHBOARD_LOGIN_TOKEN=$(kubectl describe secret -n kubernetes-dashboard ${ADMIN_SECRET} | grep -E '^token' | awk '{print $2}')
 DASHBOARD_LOGIN_TOKEN=$(kubectl get secret ${ADMIN_SECRET} -n kubernetes-dashboard -o jsonpath={.data.token} | base64 -d)
 echo ${DASHBOARD_LOGIN_TOKEN}
