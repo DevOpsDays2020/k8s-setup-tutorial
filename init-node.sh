@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo 'set host name resolution'
+echo '### set host name resolution'
 cat /vagrant/hosts >> /etc/hosts
 cat /etc/hosts
 

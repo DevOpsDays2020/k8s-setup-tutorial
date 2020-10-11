@@ -14,7 +14,11 @@ Vagrant.configure("2") do |config|
     config.vm.define "node#{i}" do |node|
       node.vm.box = "k8s-centos/7"
       node.vm.hostname = "node#{i}"
-      
+
+      node.ssh.username = 'root'
+      node.ssh.password = 'vagrant'
+      node.ssh.insert_key = 'true'
+
       ip = "192.168.56.#{i+100}"
       node.vm.network "private_network", ip: ip
       

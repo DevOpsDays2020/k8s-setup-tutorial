@@ -32,7 +32,7 @@ etcd:
     dataDir: /var/lib/etcd
 imageRepository: registry.cn-hangzhou.aliyuncs.com/google_containers # 指定镜像源为阿里源
 kind: ClusterConfiguration
-kubernetesVersion: v1.16.8
+kubernetesVersion: v1.18.4
 networking:
   dnsDomain: cluster.local
   podSubnet: 10.244.0.0/16  # Pod 网段，flannel插件需要使用这个网段
